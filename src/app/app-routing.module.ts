@@ -13,11 +13,6 @@ const routes: Routes = [
     component: BodyComponent,
     children: [
       {
-        path: 'home',
-        loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
-
-      },
-      {
         path: 'classes',
         loadChildren: () => import('./classes/classes.module').then(m => m.ClassesModule)
       },
