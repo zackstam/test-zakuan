@@ -1,0 +1,13 @@
+<form [formGroup]="formInstructor" (ngSubmit)="onSubmit()">
+    <div class="form-input" fxLayout="column" fxLayoutAlign="center center">
+        <div class="row">
+            <mat-form-field>
+                <input type="text" matInput placeholder="Nama" formControlName="name">
+                <mat-error *ngIf="formInstructor.get('name').hasError('required')  && (formInstructor.get('name').dirty || formInstructor.get('name').touched)"> Nama harus diisi</mat-error>
+              </mat-form-field>
+        </div>
+        <div class="login" fxLayoutGap="10px" fxLayout="row" fxLayoutAlign="space-around end">
+                <button class="submit" mat-flat-button color="accent" type="submit">Save</button>               
+        </div>
+    </div>
+  </form>

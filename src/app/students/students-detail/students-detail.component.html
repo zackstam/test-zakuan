@@ -1,0 +1,18 @@
+<mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Detail Student</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-list>
+            <mat-list-item> Name:  {{ student.name }}</mat-list-item>
+            <mat-list-item> NIM:  {{ student.nisn }}</mat-list-item>
+            <mat-list-item> Jurusan: {{ student.study }} </mat-list-item>
+            <mat-list-item> Kelas:  
+                <span class="list" *ngFor="let subject of student.subject">{{ subject.name }}, </span>
+            </mat-list-item>
+
+        </mat-list>
+    </mat-card-content>
+
+  </mat-card>

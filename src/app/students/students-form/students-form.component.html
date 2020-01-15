@@ -1,0 +1,52 @@
+<div class="container">
+    <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+        <div class="form-input" fxLayout="column" fxLayoutAlign="center start">
+            <div class="row">
+                <mat-form-field>
+                    <input type="text" matInput placeholder="NIM" formControlName="nisn">
+                    <mat-error *ngIf="studentForm.get('nisn').hasError('required')  && (studentForm.get('nisn').dirty || studentForm.get('nisn').touched)"> NIM harus diisi</mat-error>
+                </mat-form-field>          
+            </div>
+            <div class="row">
+                <mat-form-field>
+                    <input type="text" matInput placeholder="Nama" formControlName="name">
+                    <mat-error *ngIf="studentForm.get('name').hasError('required')  && (studentForm.get('name').dirty || studentForm.get('name').touched)"> Nama harus diisi</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <mat-form-field>
+                    <mat-select placeholder="Jurusan"  formControlName="study">
+                        <mat-option *ngFor="let study of studies" [value]="study">
+                        {{study}}
+                    </mat-option>
+                </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="row" >
+                <div formArrayName="subjects">
+                    <div fxLayout="row" fxLayoutAlign="start center" *ngFor="let subject of studentForm.get('subjects').controls; let i = index" [formGroupName]="i">
+                        <mat-form-field >
+                            <mat-select placeholder="Kelas" formControlName="subject_id">
+                                <mat-option *ngFor="let subject of subjects"  [value]="subject.id">
+                                {{subject.name}}
+                                </mat-option>
+                            </mat-select>
+                  
+                        </mat-form-field>
+
+                        <div class="button"><i class="material-icons" (click)="onAddSubject()">add_circle</i></div>
+                        <div class="button"><i class="material-icons" (click)="onRemoveSubject(i)" *ngIf="studentForm.get('subjects').controls.length !== 1">delete</i></div>
+                    </div>
+                    
+            
+                </div>
+  
+
+            </div>
+            <div class="login" fxLayoutGap="10px" fxLayout="row" fxLayoutAlign="space-around end">
+                    <button class="submit" mat-flat-button color="accent" type="submit">Save</button>               
+            </div>
+        </div>
+      </form>
+</div>
